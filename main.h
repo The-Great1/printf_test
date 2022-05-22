@@ -10,4 +10,4 @@ void print_string(char *s);
 
 
 
-#endif MAIN_H
+#endif
