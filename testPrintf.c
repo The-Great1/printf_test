@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "main.h"
+#include <stdarg.h>
 
 int main(void)
 {
@@ -18,6 +19,7 @@ while (str[position])
 		count++;
 }
 
+// printf("ab%%c%d", e);
 position = 0;
 int i = 1;
 	
@@ -28,7 +30,25 @@ int i = 1;
 			position++;
 			if (str[position] == '%')
 				putchar(str[position]);
-			getfunc(str[position])(argv[i]);
+			else
+			{
+				switch (str[position])
+				{
+					case 'd':
+					case 'i':
+						print_dec(argv[i]);
+						break;
+					case 'c':
+						print_char(argv[i]);
+						break;
+					case 's':
+						print_string(argv[i]);
+						break;
+					default:
+						print_string("Error! Format specifier not recognized.");
+						break;
+				}
+			}
 			i++;
 			position++;
 					continue;
