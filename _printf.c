@@ -25,33 +25,26 @@ int _printf(const char *format, ...)
 				_putchar(format[position]);
 				count++;
 			}
+			else if ((format[position]) == 'd' || (format[position]) == 'i')
+				count += print_dec(va_arg(specifiers, int));
+			else if ((format[position]) == 'c')
+				count += print_char(va_arg(specifiers, int));
+			else if ((format[position]) == 's')
+				count += print_string(va_arg(specifiers, char *));
 			else
 			{
-				switch (format[position])
-				{
-					case 'd':
-					case 'i':
-						count += print_dec(va_arg(specifiers, int));
-						break;
-					case 'c':
-						count += print_char(va_arg(specifiers, int));
-						break;
-					case 's':
-						count += print_string(va_arg(specifiers, char *));
-						break;
-					default:
-						print_string("Error! Format specifier not recognized.");
-						count++;
-						break;
-				}
+				print_string("Error! Format specifier not recognized.");
+				count++;
 			}
 			position++;
 			continue;
 		}
+
 		_putchar(format[position]);
 		count++;
 		position++;
 	}
+
 va_end(specifiers);
 return (count);
 }
