@@ -1,10 +1,35 @@
 #include "main.h"
 
 /**
+ * count - returns the length of an integer passed into it
+ * @n: The integer to be counted
+ * Return: Length of the integer
+ */
+int count(int n)
+{
+	int i = 1;
+
+	if (n < 0)
+	{
+		i++;
+		n = -n;
+	}
+
+	while ((n / 10) > 0)
+	{
+		i++;
+		n = n / 10;
+	}
+
+	return (i);
+}
+
+/**
  * print_dec - Prints an integer.
  * @n: The integer to be printed.
+ * Return: Length of the integer.
  */
-void print_dec(int n)
+int print_dec(int n)
 {
 	unsigned int num = n;
 
@@ -15,31 +40,38 @@ void print_dec(int n)
 	}
 
 	if ((num / 10) > 0)
-		print_number(num / 10);
+	{
+		print_dec(num / 10);
+	}
 
 	_putchar((num % 10) + '0');
+
+
+	return (count(n));
 }
 
 /**
  * print_char - prints upper and lower case alphabets
  * @c: the char to be printed
- * Return: NULL
+ * Return: 1 (Success)
  */
 
-void print_char(char c)
+int print_char(char c)
 {
 	if ((c >= 65 && c <= 97) || (c >= 97 && c <= 122))
 	{
 		_putchar(c);
 	}
+	return (1);
 }
 
 /**
  * print_string - prints strings passed as arguments
  * @s: string required to print
+ * Return: Length of string
  */
 
-void print_string(char *s)
+int print_string(char *s)
 {
 	int i = 0;
 
@@ -48,4 +80,5 @@ void print_string(char *s)
 		_putchar(s[i]);
 		i++;
 	}
+	return (i);
 }
