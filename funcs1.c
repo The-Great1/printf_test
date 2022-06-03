@@ -82,3 +82,38 @@ int print_string(char *s)
 	}
 	return (i);
 }
+
+/**
+ * print_bin - prints the binary form of decimal numbers passed int it
+ * @b: decimal number to be printed in binary form
+ * Return: Length of number printed out
+ */
+
+/**
+ * Oh, btw, this code doesn't work for some reason
+ * Probably an issue with the string syntax for bin[position = (b...
+ * Fix up!
+ */
+
+int print_bin(int b)
+{
+	int position = 0, count = 0;
+	char *bin;
+	while (b > 0)
+	{
+		bin[position] = (b % 2);
+		b = b / 2;
+		position++; count++;
+	}
+	position++; count++;
+	bin[position] = '\0';
+	position--;
+
+	while (position >= 0)
+	{
+		_putchar(bin[position]);
+		position--;
+	}
+
+	return (count);
+}
