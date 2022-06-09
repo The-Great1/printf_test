@@ -2,6 +2,11 @@
 #include "main.h"
 #include <stdarg.h>
 
+/*
+*main - test a bunch of functions for the printf function
+*
+*Return: 0(Success)
+*/
 int main(void)
 {
 // printf("%ab%%cd", e);
@@ -11,41 +16,36 @@ char *str = "%cb%%cd\n";
 int count = 0;
 int position = 0;
 
-while (str[position])
-{
-	position++;
-		if (str[position - 1] == '%' && str[position - 2] != '%')
-			continue;
-		count++;
-}
-
 // printf("ab%%c%d", e);
-position = 0;
 int i = 1;
-	
+
 	while (str[position])
 		{
 		if (str[position] == '%' && str[position - 1] != '%')
 		{
 			position++;
 			if (str[position] == '%')
+			{
 				putchar(str[position]);
+				//count++;
+			}
 			else
 			{
 				switch (str[position])
 				{
 					case 'd':
 					case 'i':
-						print_dec(argv[i]);
+						//count += print_dec(va_arg(specifier, int));
 						break;
 					case 'c':
-						print_char(argv[i]);
+						//count += print_char(va_arg(specifier, int));
 						break;
 					case 's':
-						print_string(argv[i]);
+						//count += print_string(va_arg(specifier, char *));
 						break;
 					default:
 						print_string("Error! Format specifier not recognized.");
+						//count++;
 						break;
 				}
 			}
@@ -54,6 +54,7 @@ int i = 1;
 					continue;
 		}
 			putchar(str[position]);
+			//count++;
 			position++;
 		}
 
